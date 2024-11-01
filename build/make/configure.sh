@@ -927,6 +927,14 @@ EOF
         add_ldflags "-isysroot ${iphoneos_sdk_dir}"
       fi
       ;;
+    arm*-darwintv-*)
+      add_cflags "-mappletvos-version-min=11.0"
+      iphoneos_sdk_dir="$(show_darwin_sdk_path appletvos)"
+      if [ -d "${iphoneos_sdk_dir}" ]; then
+        add_cflags  "-isysroot ${iphoneos_sdk_dir}"
+        add_ldflags "-isysroot ${iphoneos_sdk_dir}"
+      fi
+      ;;
     *-darwin*)
       osx_sdk_dir="$(show_darwin_sdk_path macosx)"
       if [ -d "${osx_sdk_dir}" ]; then
